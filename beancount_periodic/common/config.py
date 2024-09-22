@@ -6,8 +6,10 @@ from typing import Tuple
 from . import *
 
 from dateutil.relativedelta import relativedelta
-
-from beancount.utils.date_utils import parse_date_liberally
+try:
+    from beancount.utils.date_utils import parse_date_liberally
+except ImportError:
+    from beanprice.date_utils import parse_date_liberally
 
 RE_TOTAL = '\\s*(?P<total>\\d+(?:\\.\\d+)?)\\s*-'
 PART_DURATION_NAMED = "(?:Day|Week|Month|Quarter|Year)"
